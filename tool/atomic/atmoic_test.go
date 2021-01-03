@@ -2,8 +2,8 @@ package atomic
 
 import (
 	"math/rand"
+	"sync"
 	"testing"
-	"github.com/Dongxiem/gfaio/tool/atomic"
 )
 
 func TestBool(t *testing.T) {

@@ -1,8 +1,6 @@
 package atomic
 
-import (
-	"github.com/Dongxiem/gfaio/tool/atomic"
-)
+import "sync/atomic"
 
 // Int32 提供原子操作
 type Int32 struct {

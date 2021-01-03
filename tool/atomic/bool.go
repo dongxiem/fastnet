@@ -1,7 +1,7 @@
 package atomic
 
 import (
-	"github.com/Dongxiem/gfaio/tool/atomic"
+	"sync/atomic"
 )
 
 type Bool struct {
