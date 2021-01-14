@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// TestBool：测试 Bool
 func TestBool(t *testing.T) {
 	var isOk Bool
 	if isOk.Get() != false {
@@ -23,6 +24,7 @@ func TestBool(t *testing.T) {
 	}
 }
 
+// TestInt32：测试 Int32
 func TestInt32(t *testing.T) {
 	var count Int32
 	if count.Get() != 0 {
@@ -52,6 +54,7 @@ func TestInt32(t *testing.T) {
 	}
 }
 
+// TestInt64：测试 Int64
 func TestInt64(t *testing.T) {
 	var count Int64
 	if count.Get() != 0 {
