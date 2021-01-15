@@ -4,7 +4,7 @@ package poller
 
 import (
 	"github.com/Dongxiem/gfaio/log"
-	"github.com/Dongxiem/gfaio/tool/atomic"
+	"github.com/Dongxiem/gfaio/tool/sync/atomic"
 	"golang.org/x/sys/unix"
 )
 
@@ -15,9 +15,9 @@ const writeEvent = unix.EPOLLOUT
 
 // Poller：结构体封装
 type Poller struct {
-	fd       int // 文件句柄
-	eventFd  int // 事件句柄
-	running  atomic.Bool // 判断 Poller 是否在执行当中
+	fd       int           // 文件句柄
+	eventFd  int           // 事件句柄
+	running  atomic.Bool   // 判断 Poller 是否在执行当中
 	waitDone chan struct{} //  通过空结构体 chan 进行 goroutine 同步
 }
 
