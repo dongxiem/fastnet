@@ -19,13 +19,26 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62ff37a2-019e-4535-be9a-2e82b49993a3" name="Default Changelist" comment="" />
+    <list default="true" id="62ff37a2-019e-4535-be9a-2e82b49993a3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gfaio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gfaio.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="GOROOT" path="C:\Go" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="D:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -33,15 +46,23 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1mXvOJVqS88JUP9Wo02nHk436Yr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/example" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -49,27 +70,87 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager">
-    <configuration name="TestBool in github.com/Dongxiem/gfaio/tool/atomic" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\goProject\gfaio\tool\sync" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\goProject\gfaio\example" />
+      <recent name="D:\goProject\gfaio" />
+      <recent name="D:\goProject\gfaio\tool\ringbuffer" />
+      <recent name="D:\goProject\gfaio\tool\ringbuffer\example" />
+      <recent name="D:\goProject\gfaio\poller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Test.TestKeyValueContext in github.com/Dongxiem/gfaio/connection">
+    <configuration name="BenchmarkMutex in github.com/Dongxiem/gfaio/tool/spinlock" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gfaio" />
-      <working_directory value="$PROJECT_DIR$/tool/atomic" />
+      <working_directory value="$PROJECT_DIR$/tool/spinlock" />
+      <framework value="gobench" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Dongxiem/gfaio/tool/spinlock" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^BenchmarkMutex$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestDefaultPool in github.com/Dongxiem/gfaio/tool/ringbuffer/pool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gfaio" />
+      <working_directory value="$PROJECT_DIR$/tool/ringbuffer/pool" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/Dongxiem/gfaio/tool/atomic" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestBool\E$" />
+      <package value="github.com/Dongxiem/gfaio/tool/ringbuffer/pool" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestDefaultPool$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestEventLoop_RunLoop in github.com/Dongxiem/gfaio/eventloop" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gfaio" />
+      <working_directory value="$PROJECT_DIR$/eventloop" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Dongxiem/gfaio/eventloop" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestEventLoop_RunLoop$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestKeyValueContext in github.com/Dongxiem/gfaio/connection" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gfaio" />
+      <working_directory value="$PROJECT_DIR$/connection" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Dongxiem/gfaio/connection" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestKeyValueContext$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestRingBufferPool in github.com/Dongxiem/gfaio/tool/ringbuffer/pool" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="gfaio" />
+      <working_directory value="$PROJECT_DIR$/tool/ringbuffer/pool" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/Dongxiem/gfaio/tool/ringbuffer/pool" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestRingBufferPool$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestBool in github.com/Dongxiem/gfaio/tool/atomic" />
+        <item itemvalue="Go Test.TestKeyValueContext in github.com/Dongxiem/gfaio/connection" />
+        <item itemvalue="Go Test.TestDefaultPool in github.com/Dongxiem/gfaio/tool/ringbuffer/pool" />
+        <item itemvalue="Go Test.TestRingBufferPool in github.com/Dongxiem/gfaio/tool/ringbuffer/pool" />
+        <item itemvalue="Go Test.TestEventLoop_RunLoop in github.com/Dongxiem/gfaio/eventloop" />
+        <item itemvalue="Go Test.BenchmarkMutex in github.com/Dongxiem/gfaio/tool/spinlock" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -81,26 +162,50 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1609652866221">
+    <state x="718" y="225" width="484" height="606" key="#Build_Tags_&amp;_Vendoring" timestamp="1610628078929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1609652866221" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1609652866221">
+    <state x="718" y="225" width="484" height="606" key="#Build_Tags_&amp;_Vendoring/0.0.1920.1040@0.0.1920.1040" timestamp="1610628078929" />
+    <state x="552" y="178" key="#Deployment" timestamp="1610624345385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1609652866221" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1609652866221">
+    <state x="552" y="178" key="#Deployment/0.0.1920.1040@0.0.1920.1040" timestamp="1610624345385" />
+    <state x="536" y="165" key="#SSH_Configurations" timestamp="1609912527575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1609652866221" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1609652866221">
+    <state x="536" y="165" key="#SSH_Configurations/0.0.1920.1040@0.0.1920.1040" timestamp="1609912527575" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1610438518850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1609652866221" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1610438518850" />
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1610712405218">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1610712405218" />
+    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1610712405217">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1610712405217" />
+    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1610712405217">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1610712405217" />
+    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1610712405217">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1610712405217" />
+    <state x="827" y="410" key="publish.login" timestamp="1610624328518">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="827" y="410" key="publish.login/0.0.1920.1040@0.0.1920.1040" timestamp="1610624328518" />
   </component>
 </project>
