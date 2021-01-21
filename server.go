@@ -1,15 +1,15 @@
-package gfaio
+package fastnet
 
 import (
 	"errors"
 	"runtime"
 	"time"
 
-	"github.com/Dongxiem/gfaio/connection"
-	"github.com/Dongxiem/gfaio/eventloop"
-	"github.com/Dongxiem/gfaio/listener"
-	"github.com/Dongxiem/gfaio/log"
-	"github.com/Dongxiem/gfaio/tool/sync"
+	"github.com/Dongxiem/fastnet/connection"
+	"github.com/Dongxiem/fastnet/eventloop"
+	"github.com/Dongxiem/fastnet/listener"
+	"github.com/Dongxiem/fastnet/log"
+	"github.com/Dongxiem/fastnet/tool/sync"
 	"github.com/RussellLuo/timingwheel"
 	"golang.org/x/sys/unix"
 )

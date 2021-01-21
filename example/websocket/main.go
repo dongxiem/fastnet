@@ -7,10 +7,10 @@ import (
 	"math/rand"
 	"strconv"
 
-	"github.com/Dongxiem/gfaio"
-	"github.com/Dongxiem/gfaio/connection"
-	"github.com/Dongxiem/gfaio/plugins/websocket/ws"
-	"github.com/Dongxiem/gfaio/plugins/websocket/ws/util"
+	"github.com/Dongxiem/fastnet"
+	"github.com/Dongxiem/fastnet/connection"
+	"github.com/Dongxiem/fastnet/plugins/websocket/ws"
+	"github.com/Dongxiem/fastnet/plugins/websocket/ws/util"
 )
 
 type example struct{}

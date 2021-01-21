@@ -3,7 +3,7 @@ package pool
 import (
 	"sync"
 
-	"github.com/Dongxiem/gfaio/tool/ringbuffer"
+	"github.com/Dongxiem/fastnet/tool/ringbuffer"
 )
 
 var DefaultPool = New(1024)

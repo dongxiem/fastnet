@@ -8,8 +8,8 @@ import (
 	"net"
 	"os"
 
-	pb "github.com/Dongxiem/gfaio/example/protobuf/proto"
-	"github.com/Dongxiem/gfaio/plugins/protobuf"
+	pb "github.com/Dongxiem/fastnet/example/protobuf/proto"
+	"github.com/Dongxiem/fastnet/plugins/protobuf"
 	"github.com/golang/protobuf/proto"
 )
 

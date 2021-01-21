@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Dongxiem/gfaio"
-	"github.com/Dongxiem/gfaio/connection"
-	"github.com/Dongxiem/gfaio/log"
-	"github.com/Dongxiem/gfaio/tool/sync/atomic"
+	"github.com/Dongxiem/fastnet"
+	"github.com/Dongxiem/fastnet/connection"
+	"github.com/Dongxiem/fastnet/log"
+	"github.com/Dongxiem/fastnet/tool/sync/atomic"
 )
 
 type example struct {

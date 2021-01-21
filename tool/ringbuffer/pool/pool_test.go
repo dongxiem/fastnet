@@ -1,7 +1,7 @@
 package pool
 
 import (
-	"github.com/Dongxiem/gfaio/tool/ringbuffer"
+	"github.com/Dongxiem/fastnet/tool/ringbuffer"
 	"testing"
 )
 

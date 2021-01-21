@@ -1,4 +1,4 @@
-package gfaio
+package fastnet
 
 import "time"
 

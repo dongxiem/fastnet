@@ -5,8 +5,8 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/Dongxiem/gfaio"
-	"github.com/Dongxiem/gfaio/connection"
+	"github.com/Dongxiem/fastnet"
+	"github.com/Dongxiem/fastnet/connection"
 )
 
 type example struct{}

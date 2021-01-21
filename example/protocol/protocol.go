@@ -2,8 +2,8 @@ package main
 
 import (
 	"encoding/binary"
-	"github.com/Dongxiem/gfaio/connection"
-	"github.com/Dongxiem/gfaio/tool/ringbuffer"
+	"github.com/Dongxiem/fastnet/connection"
+	"github.com/Dongxiem/fastnet/tool/ringbuffer"
 	"github.com/gobwas/pool/pbytes"
 )
 

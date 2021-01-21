@@ -1,11 +1,9 @@
-module github.com/Dongxiem/gfaio
+module github.com/Dongxiem/fastnet
 
 go 1.15
 
 require (
-	github.com/Allenxuxu/gev v0.1.9
-	github.com/Allenxuxu/ringbuffer v0.0.6
-	github.com/Allenxuxu/toolkit v0.0.0-20201014055025-62998795ea16
+	github.com/Dongxiem/fastnet v0.0.0-20210121142710-14c233f4f925
 	github.com/RussellLuo/timingwheel v0.0.0-20201029015908-64de9d088c74
 	github.com/gobwas/httphead v0.1.0
 	github.com/gobwas/pool v0.2.1

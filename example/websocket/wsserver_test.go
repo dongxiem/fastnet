@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Dongxiem/gfaio"
-	"github.com/Dongxiem/gfaio/connection"
-	"github.com/Dongxiem/gfaio/plugins/websocket/ws"
-	"github.com/Dongxiem/gfaio/plugins/websocket/ws/util"
-	"github.com/Dongxiem/gfaio/tool/sync"
+	"github.com/Dongxiem/fastnet"
+	"github.com/Dongxiem/fastnet/connection"
+	"github.com/Dongxiem/fastnet/plugins/websocket/ws"
+	"github.com/Dongxiem/fastnet/plugins/websocket/ws/util"
+	"github.com/Dongxiem/fastnet/tool/sync"
 	"golang.org/x/net/websocket"
 )
 

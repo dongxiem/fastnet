@@ -3,8 +3,8 @@
 package poller
 
 import (
-	"github.com/Dongxiem/gfaio/log"
-	"github.com/Dongxiem/gfaio/tool/sync/atomic"
+	"github.com/Dongxiem/fastnet/log"
+	"github.com/Dongxiem/fastnet/tool/sync/atomic"
 	"golang.org/x/sys/unix"
 )
 

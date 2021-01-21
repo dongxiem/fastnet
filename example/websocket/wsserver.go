@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/Dongxiem/gfaio"
-	"github.com/Dongxiem/gfaio/plugins/websocket"
-	"github.com/Dongxiem/gfaio/plugins/websocket/ws"
+	"github.com/Dongxiem/fastnet"
+	"github.com/Dongxiem/fastnet/plugins/websocket"
+	"github.com/Dongxiem/fastnet/plugins/websocket/ws"
 )
 
 // NewWebSocketServer 创建 WebSocket Server

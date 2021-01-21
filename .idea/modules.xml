@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gfaio.iml" filepath="$PROJECT_DIR$/.idea/gfaio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/fastnet.iml" filepath="$PROJECT_DIR$/.idea/fastnet.iml" />
     </modules>
   </component>
 </project>

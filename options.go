@@ -1,9 +1,9 @@
-package gfaio
+package fastnet
 
 import (
 	"time"
 
-	"github.com/Dongxiem/gfaio/connection"
+	"github.com/Dongxiem/fastnet/connection"
 )
 
 // Options：服务配置

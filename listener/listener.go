@@ -5,9 +5,9 @@ import (
 	"net"
 	"os"
 
-	"github.com/Dongxiem/gfaio/eventloop"
-	"github.com/Dongxiem/gfaio/log"
-	"github.com/Dongxiem/gfaio/poller"
+	"github.com/Dongxiem/fastnet/eventloop"
+	"github.com/Dongxiem/fastnet/log"
+	"github.com/Dongxiem/fastnet/poller"
 	reuseport "github.com/libp2p/go-reuseport"
 	"golang.org/x/sys/unix"
 )

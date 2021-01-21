@@ -3,10 +3,10 @@ package eventloop
 import (
 	"sync"
 
-	"github.com/Dongxiem/gfaio/log"
-	"github.com/Dongxiem/gfaio/poller"
-	"github.com/Dongxiem/gfaio/tool/sync/atomic"
-	"github.com/Dongxiem/gfaio/tool/sync/spinlock"
+	"github.com/Dongxiem/fastnet/log"
+	"github.com/Dongxiem/fastnet/poller"
+	"github.com/Dongxiem/fastnet/tool/sync/atomic"
+	"github.com/Dongxiem/fastnet/tool/sync/spinlock"
 )
 
 // Socket：socket 接口

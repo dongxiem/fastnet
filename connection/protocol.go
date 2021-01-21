@@ -1,7 +1,7 @@
 package connection
 
 import (
-	"github.com/Dongxiem/gfaio/tool/ringbuffer"
+	"github.com/Dongxiem/fastnet/tool/ringbuffer"
 )
 
 var _ Protocol = &DefaultProtocol{}
