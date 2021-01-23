@@ -20,32 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62ff37a2-019e-4535-be9a-2e82b49993a3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gfaio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fastnet.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/connection/connection.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection/protocol.go" beforeDir="false" afterPath="$PROJECT_DIR$/connection/protocol.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eventloop/eventloop.go" beforeDir="false" afterPath="$PROJECT_DIR$/eventloop/eventloop.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/everyscheduler.go" beforeDir="false" afterPath="$PROJECT_DIR$/everyscheduler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/echo/echo.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/echo/echo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/protobuf/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/protobuf/client/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/protobuf/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/protobuf/server/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/protocol/protocol.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/protocol/protocol.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/protocol/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/protocol/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pushmessage/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/pushmessage/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/websocket/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/websocket/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/websocket/wsserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/websocket/wsserver.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/websocket/wsserver_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/example/websocket/wsserver_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/listener/listener.go" beforeDir="false" afterPath="$PROJECT_DIR$/listener/listener.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/options.go" beforeDir="false" afterPath="$PROJECT_DIR$/options.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poller/epoll.go" beforeDir="false" afterPath="$PROJECT_DIR$/poller/epoll.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_conn_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server_conn_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/server_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/ringbuffer/pool/pool.go" beforeDir="false" afterPath="$PROJECT_DIR$/tool/ringbuffer/pool/pool.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/ringbuffer/pool/pool_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/tool/ringbuffer/pool/pool_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
