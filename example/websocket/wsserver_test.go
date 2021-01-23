@@ -61,9 +61,9 @@ func TestWebSocketServer_Start(t *testing.T) {
 	handler := new(wsExample)
 
 	s, err := NewWebSocketServer(handler, &ws.Upgrader{},
-		gfaio.Address(":1834"),
-		gfaio.NumLoops(8),
-		gfaio.ReusePort(true))
+		fastnet.Address(":1834"),
+		fastnet.NumLoops(8),
+		fastnet.ReusePort(true))
 	if err != nil {
 		t.Fatal(err)
 	}

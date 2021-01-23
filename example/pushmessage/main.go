@@ -16,7 +16,7 @@ const clientsKey = "demo_push_message_key"
 type Server struct {
 	conn   *list.List
 	mu     sync.RWMutex
-	server *gfaio.Server
+	server *fastnet.Server
 }
 
 // New server
@@ -24,8 +24,8 @@ func New(ip, port string) (*Server, error) {
 	var err error
 	s := new(Server)
 	s.conn = list.New()
-	s.server, err = gfaio.NewServer(s,
-		gfaio.Address(ip+":"+port))
+	s.server, err = fastnet.NewServer(s,
+		fastnet.Address(ip+":"+port))
 	if err != nil {
 		return nil, err
 	}

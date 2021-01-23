@@ -14,7 +14,7 @@ import (
 type Server struct {
 	clientNum     atomic.Int64
 	maxConnection int64
-	server        *gfaio.Server
+	server        *fastnet.Server
 }
 
 // New server
@@ -22,8 +22,8 @@ func New(ip, port string, maxConnection int64) (*Server, error) {
 	var err error
 	s := new(Server)
 	s.maxConnection = maxConnection
-	s.server, err = gfaio.NewServer(s,
-		gfaio.Address(ip+":"+port))
+	s.server, err = fastnet.NewServer(s,
+		fastnet.Address(ip+":"+port))
 	if err != nil {
 		return nil, err
 	}

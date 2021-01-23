@@ -47,10 +47,10 @@ func main() {
 	flag.IntVar(&loops, "loops", -1, "num loops")
 	flag.Parse()
 
-	s, err := gfaio.NewServer(handler,
-		gfaio.Network("tcp"),
-		gfaio.Address(":"+strconv.Itoa(port)),
-		gfaio.NumLoops(loops))
+	s, err := fastnet.NewServer(handler,
+		fastnet.Network("tcp"),
+		fastnet.Address(":"+strconv.Itoa(port)),
+		fastnet.NumLoops(loops))
 	if err != nil {
 		panic(err)
 	}

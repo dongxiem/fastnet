@@ -70,9 +70,9 @@ func main() {
 	}
 
 	s, err := NewWebSocketServer(handler, wsUpgrader,
-		gfaio.Network("tcp"),
-		gfaio.Address(":"+strconv.Itoa(port)),
-		gfaio.NumLoops(loops))
+		fastnet.Network("tcp"),
+		fastnet.Address(":"+strconv.Itoa(port)),
+		fastnet.NumLoops(loops))
 	if err != nil {
 		panic(err)
 	}
