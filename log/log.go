@@ -35,7 +35,7 @@ var (
 	level = LevelInfo
 
 	// prefix for all messages, default is "[Gev]"
-	prefix = "[Gev]"
+	prefix = "[fastnet]"
 )
 
 type defaultLogLogger struct{}
