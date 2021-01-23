@@ -202,7 +202,7 @@ type example1 struct {
 
 func (s *example1) OnConnect(c *connection.Connection) {
 	s.Count.Add(1)
-	_ = c.Send([]byte("hello gev"))
+	_ = c.Send([]byte("hello fastnet"))
 	//log.Println(" OnConnect ： ", c.PeerAddr())
 }
 

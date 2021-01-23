@@ -23,7 +23,6 @@ func (s *example2) OnConnect(c *connection.Connection) {
 
 func (s *example2) OnMessage(c *connection.Connection, ctx interface{}, data []byte) (out []byte) {
 	log.Info("OnMessage")
-
 	return
 }
 

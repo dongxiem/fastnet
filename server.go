@@ -22,13 +22,13 @@ type Handler interface {
 
 // Server：gfaio Server
 type Server struct {
-	loop          *eventloop.EventLoop // 主事件循环，负责监听客户端连接
-	workLoops     []*eventloop.EventLoop // 其他负责处理已连接客户端的读写事件
-	nextLoopIndex int // 下一个循环索引
-	callback      Handler // 回调函数
+	loop          *eventloop.EventLoop 		// 主事件循环，负责监听客户端连接
+	workLoops     []*eventloop.EventLoop 	// 其他负责处理已连接客户端的读写事件
+	nextLoopIndex int 						// 下一个循环索引
+	callback      Handler 					// 回调函数
 
 	timingWheel *timingwheel.TimingWheel
-	opts        *Options // 配置选项
+	opts        *Options 					// 配置选项
 }
 
 // NewServer：创建 Server
