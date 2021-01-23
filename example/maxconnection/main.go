@@ -5,9 +5,9 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 
-	"github.com/Dongxiem/gfaio"
-	"github.com/Dongxiem/gfaio/connection"
-	"github.com/Dongxiem/gfaio/tool/sync/atomic"
+	"github.com/Dongxiem/fastnet"
+	"github.com/Dongxiem/fastnet/connection"
+	"github.com/Dongxiem/fastnet/tool/sync/atomic"
 )
 
 // Server example
@@ -17,7 +17,7 @@ type Server struct {
 	server        *fastnet.Server
 }
 
-// New server
+// New：创建一个新的 server
 func New(ip, port string, maxConnection int64) (*Server, error) {
 	var err error
 	s := new(Server)
@@ -31,21 +31,22 @@ func New(ip, port string, maxConnection int64) (*Server, error) {
 	return s, nil
 }
 
-// Start server
+// Start：开启 Server
 func (s *Server) Start() {
 	s.server.Start()
 }
 
-// Stop server
+// Stop：停止 Server
 func (s *Server) Stop() {
 	s.server.Stop()
 }
 
-// OnConnect callback
+// OnConnect：回调函数
 func (s *Server) OnConnect(c *connection.Connection) {
+	// 每连接一个客户端用户则计数原子加 1
 	s.clientNum.Add(1)
 	log.Println(" OnConnect ： ", c.PeerAddr())
-
+	// 判断用户连接数是否大于最大限制连接数
 	if s.clientNum.Get() > s.maxConnection {
 		_ = c.ShutdownWrite()
 		log.Println("Refused connection")
@@ -60,7 +61,7 @@ func (s *Server) OnMessage(c *connection.Connection, ctx interface{}, data []byt
 	return
 }
 
-// OnClose callback
+// OnClose：关闭时回调函数
 func (s *Server) OnClose(c *connection.Connection) {
 	s.clientNum.Add(-1)
 	log.Println("OnClose")
@@ -72,8 +73,8 @@ func main() {
 			panic(err)
 		}
 	}()
-
-	s, err := New("", "1833", 1)
+	// 设置最大连接数为 10000
+	s, err := New("", "1833", 10000)
 	if err != nil {
 		panic(err)
 	}
