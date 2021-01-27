@@ -13,6 +13,7 @@ import (
 	"github.com/Dongxiem/fastnet/tool/sync/atomic"
 )
 
+// 定义 example 类型，并实现 Handler 接口对应的所有方法
 type example struct {
 	Count atomic.Int64
 }
@@ -47,6 +48,7 @@ func main() {
 	flag.IntVar(&loops, "loops", -1, "num loops")
 	flag.Parse()
 
+	// new 一个 server，根据传递进来的 loops 进行工作线程循环的调配
 	s, err := fastnet.NewServer(handler,
 		fastnet.Network("tcp"),
 		fastnet.Address(":"+strconv.Itoa(port)),
@@ -55,9 +57,10 @@ func main() {
 		panic(err)
 	}
 
+	// 每两秒打印一下 handle 统计
 	s.RunEvery(time.Second*2, func() {
 		log.Info("connections :", handler.Count.Get())
 	})
-
+	// 启动 server
 	s.Start()
 }

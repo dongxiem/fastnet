@@ -28,10 +28,10 @@ type CallBack interface {
 type Connection struct {
 	fd        int
 	connected atomic.Bool
-	outBuffer *ringbuffer.RingBuffer // write buffer
-	inBuffer  *ringbuffer.RingBuffer // read buffer
-	callBack  CallBack
-	loop      *eventloop.EventLoop
+	outBuffer *ringbuffer.RingBuffer 	// 写 buffer
+	inBuffer  *ringbuffer.RingBuffer 	// 读 buffer
+	callBack  CallBack					// 回调方法
+	loop      *eventloop.EventLoop		// 循环调度
 	peerAddr  string
 	ctx       interface{}
 	KeyValueContext
@@ -40,7 +40,7 @@ type Connection struct {
 	activeTime  atomic.Int64
 	timingWheel *timingwheel.TimingWheel
 
-	protocol Protocol
+	protocol Protocol					// 使用协议
 }
 
 // ErrConnectionClosed：生成新错误连接已关闭
@@ -69,11 +69,12 @@ func New(fd int, loop *eventloop.EventLoop, sa unix.Sockaddr, protocol Protocol,
 	return conn
 }
 
-// closeTimeoutConn：关闭超时连接
+// closeTimeoutConn：关闭超时的连接
 func (c *Connection) closeTimeoutConn() func() {
 	return func() {
 		now := time.Now()
 		intervals := now.Sub(time.Unix(c.activeTime.Get(), 0))
+		// 判断时间差
 		if intervals >= c.idleTime {
 			_ = c.Close()
 		} else {
@@ -116,10 +117,11 @@ func (c *Connection) Send(buffer []byte) error {
 
 // Close：关闭连接
 func (c *Connection) Close() error {
+	// 如果不能获取当前连接，则报错
 	if !c.connected.Get() {
 		return ErrConnectionClosed
 	}
-
+	// 进去循环 loop中调用关闭函数
 	c.loop.QueueInLoop(func() {
 		c.handleClose(c.fd)
 	})
@@ -254,7 +256,7 @@ func (c *Connection) handleClose(fd int) {
 	}
 }
 
-// sendInLoop：送入循环单重
+// sendInLoop：送入循环
 func (c *Connection) sendInLoop(data []byte) {
 	if c.outBuffer.Length() > 0 {
 		_, _ = c.outBuffer.Write(data)

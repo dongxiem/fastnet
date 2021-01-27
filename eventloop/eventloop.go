@@ -90,12 +90,14 @@ func (l *EventLoop) Stop() error {
 		if !ok {
 			log.Error("value.(Socket) fail")
 		} else {
+			// 关闭 socket
 			if err := s.Close(); err != nil {
 				log.Error(err)
 			}
 		}
 		return true
 	})
+	// 最后并关闭 poll，返回其成功与否标志位
 	return l.poll.Close()
 }
 
