@@ -108,6 +108,7 @@ func (r *RingBuffer) VirtualLength() int {
 	return r.size - r.vr + r.w
 }
 
+// RetrieveAll：重置大小
 func (r *RingBuffer) RetrieveAll() {
 	r.r = 0
 	r.w = 0
@@ -115,6 +116,7 @@ func (r *RingBuffer) RetrieveAll() {
 	r.isEmpty = true
 }
 
+// Retrieve：根据 len，进行环形长度缩短
 func (r *RingBuffer) Retrieve(len int) {
 	if r.isEmpty || len <= 0 {
 		return
@@ -227,6 +229,7 @@ func (r *RingBuffer) PeekUint64() uint64 {
 	}
 }
 
+// Read：读数据
 func (r *RingBuffer) Read(p []byte) (n int, err error) {
 	if len(p) == 0 {
 		return 0, nil
@@ -389,24 +392,29 @@ func (r *RingBuffer) Bytes() (buf []byte) {
 	return
 }
 
+// IsFull：判满
 func (r *RingBuffer) IsFull() bool {
 	return !r.isEmpty && r.w == r.r
 }
 
+// IsEmpty：判空
 func (r *RingBuffer) IsEmpty() bool {
 	return r.isEmpty
 }
 
+// Reset：重置
 func (r *RingBuffer) Reset() {
 	r.r = 0
 	r.w = 0
 	r.isEmpty = true
 }
 
+// String：转换为 string
 func (r *RingBuffer) String() string {
 	return fmt.Sprintf("Ring Buffer: \n\tCap: %d\n\tReadable Bytes: %d\n\tWriteable Bytes: %d\n\tBuffer: %s\n", r.size, r.Length(), r.free(), r.buf)
 }
 
+// makeSpace：扩容
 func (r *RingBuffer) makeSpace(len int) {
 	newSize := r.size + len
 	newBuf := make([]byte, newSize)
@@ -419,6 +427,7 @@ func (r *RingBuffer) makeSpace(len int) {
 	r.buf = newBuf
 }
 
+// free：取得空闲空间
 func (r *RingBuffer) free() int {
 	if r.w == r.r {
 		if r.isEmpty {
@@ -434,6 +443,7 @@ func (r *RingBuffer) free() int {
 	return r.size - r.w + r.r
 }
 
+// copyByte：复制
 func copyByte(f, e []byte) []byte {
 	buf := make([]byte, len(f)+len(e))
 	_ = copy(buf, f)
