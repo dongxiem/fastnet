@@ -9,8 +9,8 @@ import (
 // Options：服务配置
 type Options struct {
 	Network   string				// 网络协议
-	Address   string				// 端口地址
-	NumLoops  int					// work 协程，负责处理已连接客户端的读写事件
+	Address   string				// 监听端口地址
+	NumLoops  int					// work 协程个数，负责处理已连接客户端的读写事件
 	ReusePort bool					// 是否开启端口复用
 
 	tick      time.Duration			// 事件持续

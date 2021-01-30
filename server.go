@@ -20,12 +20,12 @@ type Handler interface {
 	OnConnect(c *connection.Connection)
 }
 
-// Server：gfaio Server
+// Server：fastnet Server
 type Server struct {
 	loop          *eventloop.EventLoop 		// 主事件循环，负责监听客户端连接
 	workLoops     []*eventloop.EventLoop 	// 其他负责处理已连接客户端的读写事件
 	nextLoopIndex int 						// 下一个循环索引
-	callback      Handler 					// 回调函数
+	callback      Handler 					// 回调处理
 
 	timingWheel *timingwheel.TimingWheel
 	opts        *Options 					// 配置选项
@@ -80,12 +80,12 @@ func NewServer(handler Handler, opts ...Option) (server *Server, err error) {
 	return
 }
 
-// RunAfter：延时任务
+// RunAfter：延时任务开启
 func (s *Server) RunAfter(d time.Duration, f func()) *timingwheel.Timer {
 	return s.timingWheel.AfterFunc(d, f)
 }
 
-// RunEvery：定时任务
+// RunEvery：定时任务，定时每 Duration 时间执行 f
 func (s *Server) RunEvery(d time.Duration, f func()) *timingwheel.Timer {
 	return s.timingWheel.ScheduleFunc(&everyScheduler{Interval: d}, f)
 }
@@ -100,6 +100,7 @@ func (s *Server) nextLoop() *eventloop.EventLoop {
 
 // handleNewConnection：处理新的 socket 连接
 func (s *Server) handleNewConnection(fd int, sa unix.Sockaddr) {
+	// 取得下一个循环的 work 线程
 	loop := s.nextLoop()
 	// 生成新的 connection 连接
 	c := connection.New(fd, loop, sa, s.opts.Protocol, s.timingWheel, s.opts.IdleTime, s.callback)
@@ -116,25 +117,27 @@ func (s *Server) Start() {
 	// 使用 WaitGroup 进行并发模型构建
 	sw := sync.WaitGroupWrapper{}
 	s.timingWheel.Start()
-	// 获取循环工作的长度
+	// 获取循环工作线程的大小
 	length := len(s.workLoops)
-	// 进行每个工作的循环监听启动
+	// 然后让每个工作线程都启动
 	for i := 0; i < length; i++ {
 		sw.AddAndRun(s.workLoops[i].RunLoop)
 	}
-	// 主事件循环
+	// 并开启主事件循环
 	sw.AddAndRun(s.loop.RunLoop)
-	// 等待退出
+	// 在这里等待所有线程结束、退出
 	sw.Wait()
 }
 
 // Stop：关闭 Server
 func (s *Server) Stop() {
+	// 先停止 timingWheel
 	s.timingWheel.Stop()
+	// 关闭主循环线程
 	if err := s.loop.Stop(); err != nil {
 		log.Error(err)
 	}
-
+	// 关闭其他工作线程
 	for k := range s.workLoops {
 		if err := s.workLoops[k].Stop(); err != nil {
 			log.Error(err)

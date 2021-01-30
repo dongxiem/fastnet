@@ -23,9 +23,10 @@ func New() *Protocol {
 	return &Protocol{}
 }
 
-// UnPacket：解析包
+// UnPacket：拆包
 func (p *Protocol) UnPacket(c *connection.Connection, buffer *ringbuffer.RingBuffer) (ctx interface{}, out []byte) {
 	if buffer.Length() > 6 {
+		// 得到长度
 		len := int(buffer.PeekUint32())
 		if buffer.Length() >= len+4 {
 			buffer.Retrieve(4)
@@ -49,7 +50,7 @@ func (p *Protocol) UnPacket(c *connection.Connection, buffer *ringbuffer.RingBuf
 	return
 }
 
-// Packet：打装包
+// Packet：装包
 func (p *Protocol) Packet(c *connection.Connection, data []byte) []byte {
 	return data
 }
