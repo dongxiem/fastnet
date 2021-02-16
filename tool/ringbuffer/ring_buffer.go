@@ -162,16 +162,18 @@ func (r *RingBuffer) Peek(len int) (first []byte, end []byte) {
 	return
 }
 
+// PeekAll：得到读 与 写的数据
 func (r *RingBuffer) PeekAll() (first []byte, end []byte) {
 	if r.isEmpty {
 		return
 	}
 
+	// 如果写指针在大于读指针，返回读指针到写指针那一段即可
 	if r.w > r.r {
 		first = r.buf[r.r:r.w]
 		return
 	}
-
+	// 否则则为写指针小于等于读指针，则应分为两段进行提取
 	first = r.buf[r.r:r.size]
 	end = r.buf[0:r.w]
 	return
