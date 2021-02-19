@@ -10,6 +10,7 @@ type WaitGroupWrapper struct {
 
 func (w *WaitGroupWrapper) AddAndRun(cb func()) {
 	w.wg.Add(1)
+	// 协程开启
 	go func() {
 		cb()
 		w.wg.Done()

@@ -27,7 +27,7 @@ type Server struct {
 	nextLoopIndex int 						// 下一个循环索引
 	callback      Handler 					// 回调处理
 
-	timingWheel *timingwheel.TimingWheel
+	timingWheel *timingwheel.TimingWheel	// 定时器
 	opts        *Options 					// 配置选项
 }
 
@@ -98,7 +98,7 @@ func (s *Server) nextLoop() *eventloop.EventLoop {
 	return loop
 }
 
-// handleNewConnection：处理新的 socket 连接
+// handleNewConnection：进行监听事件的分发，也即 Listener 中的调用方法
 func (s *Server) handleNewConnection(fd int, sa unix.Sockaddr) {
 	// 取得下一个循环的 work 线程
 	loop := s.nextLoop()

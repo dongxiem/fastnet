@@ -38,7 +38,7 @@ func main() {
 	close(startC)
 	// 进行休眠
 	time.Sleep(time.Duration(*timeOut) * time.Second)
-	// stop
+	// 进行关闭通道 closeC
 	close(closeC)
 
 	var totalMessagesRead int64
@@ -66,6 +66,7 @@ func handler(conn net.Conn, startC chan interface{}, closeC chan interface{}, re
 		case <-closeC:
 			// 接收到 closeC 时，Client 进行关闭，则将剩余所有 count 写入通道 result
 			result <- count
+			// 关闭链接
 			conn.Close()
 			return
 		default:
@@ -77,6 +78,7 @@ func handler(conn net.Conn, startC chan interface{}, closeC chan interface{}, re
 			if err != nil {
 				fmt.Print("Error to read message because of ", err)
 				result <- count
+				// 调用 close 方法
 				conn.Close()
 				return
 			}

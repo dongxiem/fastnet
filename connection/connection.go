@@ -103,13 +103,16 @@ func (c *Connection) Connected() bool {
 	return c.connected.Get()
 }
 
-// Send：用来在非 loop 协程发送
+// Send：进行发送数据
 func (c *Connection) Send(buffer []byte) error {
+	// 如果未连接或连接已断开
 	if !c.connected.Get() {
 		return ErrConnectionClosed
 	}
 
+	// 循环调用 sendInLoop 方法
 	c.loop.QueueInLoop(func() {
+		// 进行协议打包封装之后再发送
 		c.sendInLoop(c.protocol.Packet(c, buffer))
 	})
 	return nil
@@ -145,12 +148,14 @@ func (c *Connection) HandleEvent(fd int, events poller.Event) {
 		return
 	}
 
+	// 判断 outBuffer 是否为空
 	if c.outBuffer.Length() != 0 {
+		// 再接着判断 events 是为读事件还是写事件
 		if events&poller.EventWrite != 0 {
-			// 处理读事件
+			// 处理写事件
 			c.handleWrite(fd)
 		} else if events&poller.EventRead != 0 {
-			// 处理写事件
+			// 处理读事件
 			c.handleRead(fd)
 		}
 	}
@@ -162,7 +167,9 @@ func (c *Connection) handlerProtocol(buffer *ringbuffer.RingBuffer) []byte {
 	out := pbytes.GetCap(1024)
 	ctx, receivedData := c.protocol.UnPacket(c, buffer)
 	for ctx != nil || len(receivedData) != 0 {
+		// 调用 OnMessage 进行相对应的处理后得到 sendData
 		sendData := c.callBack.OnMessage(c, ctx, receivedData)
+		// 如果 sendData 长度大于 0，则插入 out 当中
 		if len(sendData) > 0 {
 			out = append(out, c.protocol.Packet(c, sendData)...)
 		}
@@ -175,8 +182,10 @@ func (c *Connection) handlerProtocol(buffer *ringbuffer.RingBuffer) []byte {
 // handleRead：处理读事件
 func (c *Connection) handleRead(fd int) {
 	// TODO 避免这次内存拷贝
+	// 获得当前 buf，并通过读系统调用写入到 buf
 	buf := c.loop.PacketBuf()
 	n, err := unix.Read(c.fd, buf)
+	// 错误处理，非阻塞IO 缓冲区未准备数据可供读则返回错误为 EAGAIN
 	if n == 0 || err != nil {
 		if err != unix.EAGAIN {
 			c.handleClose(fd)
@@ -185,19 +194,24 @@ func (c *Connection) handleRead(fd int) {
 	}
 
 	if c.inBuffer.Length() == 0 {
+		// 1. 如果 inBuffer 为空
+		// 通过 ringbuffer.NewWithData 传入 buf[:n] 创建一个新的 buffer
 		buffer := ringbuffer.NewWithData(buf[:n])
+		// 使用 handlerProtocol 进行解析得到 out
 		out := c.handlerProtocol(buffer)
-
+		// 如果此时 buffer 长度不为 0，则获取其内容并写入到 inBuffer 中
 		if buffer.Length() > 0 {
 			first, _ := buffer.PeekAll()
 			_, _ = c.inBuffer.Write(first)
 		}
 		if len(out) != 0 {
+			// 处理 out 写buffer
 			c.sendInLoop(out)
 		}
 
 		pbytes.Put(out)
 	} else {
+		// 2. 如果 inBuffer 不为空，则写入到 inBuffer 中
 		_, _ = c.inBuffer.Write(buf[:n])
 		out := c.handlerProtocol(c.inBuffer)
 		if len(out) != 0 {
@@ -210,19 +224,25 @@ func (c *Connection) handleRead(fd int) {
 
 // handleWrite：处理写事件
 func (c *Connection) handleWrite(fd int) {
+	// 从 outBuffer 取出数据
 	first, end := c.outBuffer.PeekAll()
 	n, err := unix.Write(c.fd, first)
+	// 错误处理，非阻塞IO 缓冲区没有空间可供写则返回错误为 EAGAIN
 	if err != nil {
+		// 返回 EAGAIN 并不做其他动作，将数据保存在 outBuffer 中，等待下次写
 		if err == unix.EAGAIN {
 			return
 		}
 		c.handleClose(fd)
 		return
 	}
+	// 清楚部分数据
 	c.outBuffer.Retrieve(n)
 
+	// 再进行判断 end 是否有数据，有则同样处理
 	if n == len(first) && len(end) > 0 {
 		n, err = unix.Write(c.fd, end)
+		// 错误处理，非阻塞IO 缓冲区没有空间可供写则返回错误为 EAGAIN
 		if err != nil {
 			if err == unix.EAGAIN {
 				return
@@ -233,6 +253,7 @@ func (c *Connection) handleWrite(fd int) {
 		c.outBuffer.Retrieve(n)
 	}
 
+	// 处理完了之后，通知 fd 可读
 	if c.outBuffer.Length() == 0 {
 		if err := c.loop.EnableRead(fd); err != nil {
 			log.Error("[EnableRead]", err)
@@ -246,6 +267,7 @@ func (c *Connection) handleClose(fd int) {
 		c.connected.Set(false)
 		c.loop.DeleteFdInLoop(fd)
 
+		// 关闭事件会调用 OnClose
 		c.callBack.OnClose(c)
 		if err := unix.Close(fd); err != nil {
 			log.Error("[close fd]", err)
@@ -256,12 +278,15 @@ func (c *Connection) handleClose(fd int) {
 	}
 }
 
-// sendInLoop：送入循环
+// sendInLoop：送入循环，data 为经过协议处理过后的数据
 func (c *Connection) sendInLoop(data []byte) {
 	if c.outBuffer.Length() > 0 {
+		// 如果 outBuffer 长度不为 0，则直接将 outBuffer 写入到 outBuffer
 		_, _ = c.outBuffer.Write(data)
 	} else {
+		// 否则直接调用写系统调用，将数据写入到 fd 对应的的文件中
 		n, err := unix.Write(c.fd, data)
+		// 错误处理，非阻塞IO 缓冲区无位置可供写则返回错误为 EAGAIN
 		if err != nil {
 			if err == unix.EAGAIN {
 				return
@@ -270,11 +295,14 @@ func (c *Connection) sendInLoop(data []byte) {
 			return
 		}
 		if n == 0 {
+			// 如果写入的大小为 0，则将所有的 data 写入到 outBuffer 中
 			_, _ = c.outBuffer.Write(data)
 		} else if n < len(data) {
+			// 如果写入的大小为 n 且不为0，则将其剩余部分内容保存起来
 			_, _ = c.outBuffer.Write(data[n:])
 		}
 
+		// 通知可读可写
 		if c.outBuffer.Length() > 0 {
 			_ = c.loop.EnableReadWrite(c.fd)
 		}

@@ -17,11 +17,11 @@ type HandleConnFunc func(fd int, sa unix.Sockaddr)
 
 // Listener：监听TCP连接
 type Listener struct {
-	file     *os.File	// 文件
-	fd       int // 文件描述符
-	handleC  HandleConnFunc // 处理新连接函数
-	listener net.Listener // Listener 监听
-	loop     *eventloop.EventLoop // 事件循环
+	file     *os.File				// 文件
+	fd       int 					// 文件描述符
+	handleC  HandleConnFunc 		// 处理新连接函数
+	listener net.Listener 			// Listener 监听
+	loop     *eventloop.EventLoop 	// 事件循环
 }
 
 // New：创建一个新的 Listener 监听
