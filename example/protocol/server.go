@@ -37,7 +37,7 @@ func main() {
 		fastnet.Network("tcp"),
 		fastnet.Address(":"+strconv.Itoa(port)),
 		fastnet.NumLoops(loops),
-		fastnet.Protocol(&ExampleProtocol{}))
+		fastnet.Protocol(&ExampleProtocol{}))	// 这里指定使用的协议
 	if err != nil {
 		panic(err)
 	}

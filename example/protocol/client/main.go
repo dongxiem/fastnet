@@ -10,6 +10,7 @@ import (
 	"os"
 )
 
+// Packet：装包
 func Packet(data []byte) []byte {
 	buffer := make([]byte, 4+len(data))
 	// 将buffer前面四个字节设置为包长度，大端序
@@ -18,6 +19,7 @@ func Packet(data []byte) []byte {
 	return buffer
 }
 
+// UnPacket：拆包
 func UnPacket(c net.Conn) ([]byte, error) {
 	var header = make([]byte, 4)
 
@@ -47,6 +49,7 @@ func main() {
 		fmt.Print("Text to send: ")
 		text, _ := reader.ReadString('\n')
 
+		// 先装包
 		buffer := Packet([]byte(text))
 		_, err := conn.Write(buffer)
 		if err != nil {
@@ -54,6 +57,7 @@ func main() {
 		}
 
 		// listen for reply
+		// 再拆包
 		msg, err := UnPacket(conn)
 		if err != nil {
 			panic(err)
