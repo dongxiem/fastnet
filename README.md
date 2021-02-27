@@ -5,7 +5,7 @@
 
 ## fastnet 特性
 
-- 使用 `Epoll` 边沿触发的IO多路复用技术，非阻塞IO，使用 `Reactor` 模式；
+- 使用 `Epoll` 水平触发的IO多路复用技术，非阻塞IO，使用 `Reactor` 模式；
 - 使用多线程充分利用多核CPU，使用动态扩容 `Ring Buffer` 实现读写缓冲区；
 - 支持异步读写操作、支持 `SO_REUSEPORT` 端口重用；
 - 灵活的事件定时器，可以定时任务，延时任务；
