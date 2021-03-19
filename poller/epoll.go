@@ -192,17 +192,17 @@ func (ep *Poller) Poll(handler func(fd int, event Event)) {
 				// 当 epoll 检测到有就绪的 fd 时，会逐个调用上面的回调函数，主要逻辑也在这里。
 				handler(fd, rEvents)
 			} else {
-				// 该 fd 是当前 Poller 的 eventFd，证明当前 Poller 中对应的 Epoll 被唤醒
 				ep.wakeHandlerRead()
 				wake = true
 			}
 		}
-		// 如果 wake 置为 True
+		// 如果 wake 置为 True，意思即被唤醒
 		if wake {
-			// 使用 handler 处理
+			// 使用 handler 去查看并处理剩余事件，进行完美退出
 			handler(-1, 0)
 			// 再将 wake 置为 false
 			wake = false
+			// 进行退出，退出时候会延迟调用 close(ep.waitDone)
 			if !ep.running.Get() {
 				return
 			}

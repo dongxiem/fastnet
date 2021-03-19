@@ -149,3 +149,4 @@ func (s *Server) Stop() {
 func (s *Server) Options() Options {
 	return *s.opts
 }
+
